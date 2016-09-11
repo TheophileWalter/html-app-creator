@@ -1,5 +1,5 @@
 ﻿HTML APP EDITOR by Théophile WALTER.
-Version 1.0.3
+Version 1.0.4
 
 Here some special functions you can use (others will come later)
   - console.clear() : Clear the JavaScript Console in the main developpment page.
