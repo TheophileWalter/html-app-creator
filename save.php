@@ -1,5 +1,12 @@
 <?php
 
+// Séparateur de dossier
+if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+	$s = "\\";
+} else {
+	$s = "/";
+}
+
 if (!isset($_GET['m']))
 	error(1);
 
@@ -13,7 +20,7 @@ switch ($_GET['m']) {
 	case "create":
 		
 		$app_id = rand_str(8);
-		$subpath = "files/".substr($app_id, 0, 1)."/".substr($app_id, 1, 1)."/";
+		$subpath = "files$s".substr($app_id, 0, 1).$s.substr($app_id, 1, 1).$s;
 		$path = $subpath.substr($app_id, 2).".0";
 		if (!is_dir($subpath)) {
 			mkdir($subpath, 0777, true);
@@ -32,7 +39,7 @@ switch ($_GET['m']) {
 		
 		// Récupère la dernier version
 		$last_version = 0;
-		$path = "files/".substr($_POST['app'], 0, 1)."/".substr($_POST['app'], 1, 1)."/".substr($_POST['app'], 2).".";
+		$path = "files$s".substr($_POST['app'], 0, 1).$s.substr($_POST['app'], 1, 1).$s.substr($_POST['app'], 2).".";
 		while (file_exists($path.strval($last_version).".html")) {
 			$last_version++;
 		}

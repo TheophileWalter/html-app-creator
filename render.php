@@ -1,5 +1,12 @@
 <?php
 
+// Séparateur de dossier
+if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+	$s = "\\";
+} else {
+	$s = "/";
+}
+
 function countlines($str) {
 	return substr_count( $str, "\n" );
 }
@@ -17,7 +24,7 @@ $loaded = false;
 if (isset($_GET['fullscreen']) && isset($_GET['app']) && ctype_alnum($_GET['app'])) {
 	if (isset($_GET['version']) && ctype_digit($_GET['version']))
 		$app_version = $_GET['version'];
-	$path = "files/".substr($_GET['app'], 0, 1)."/".substr($_GET['app'], 1, 1)."/".substr($_GET['app'], 2).".".$app_version;
+	$path = "files$s".substr($_GET['app'], 0, 1).$s.substr($_GET['app'], 1, 1).$s.substr($_GET['app'], 2).".".$app_version;
 	if (file_exists($path.".html")) {
 		$def_html = file_get_contents($path.".html");
 		$def_css = file_get_contents($path.".css");
