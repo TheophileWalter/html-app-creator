@@ -214,7 +214,7 @@ if (isset($_GET['fullscreen'])) {
 					if (xhttp.readyState == 4 && xhttp.status == 200) {
 						if (!xhttp.responseText.startsWith("error:")) {
 							currentAppId = xhttp.responseText;
-							window.history.pushState("", "", "/html-app-creator/?app=" + currentAppId);
+							window.history.pushState("", "", "?app=" + currentAppId);
 							if (openFullsceen) {
 								fullScreen();
 							}
@@ -232,7 +232,7 @@ if (isset($_GET['fullscreen'])) {
 				xhttp.onreadystatechange = function() {
 					if (xhttp.readyState == 4 && xhttp.status == 200) {
 						if (!xhttp.responseText.startsWith("error:")) {
-							window.history.pushState("", "", "/html-app-creator/?app=" + currentAppId + "&version=" + xhttp.responseText);
+							window.history.pushState("", "", "?app=" + currentAppId + "&version=" + xhttp.responseText);
 							if (openFullsceen) {
 								fullScreen();
 							}
@@ -263,7 +263,7 @@ if (isset($_GET['fullscreen'])) {
 		
 		// If the app does not exists
 		if (currentAppId == "" && location.href.indexOf("?") != -1)
-			window.history.pushState("", "", "/html-app-creator/");
+			window.history.pushState("", "", "");
 		
 <?php } ?>
 	</script>
