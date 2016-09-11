@@ -263,7 +263,7 @@ if (isset($_GET['fullscreen'])) {
 		
 		// If the app does not exists
 		if (currentAppId == "" && location.href.indexOf("?") != -1)
-			window.history.pushState("", "", "");
+			window.history.pushState("", "", "./");
 		
 <?php } ?>
 	</script>
