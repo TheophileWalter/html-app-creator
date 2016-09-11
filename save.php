@@ -12,9 +12,12 @@ if ($_POST['html'] == "" && $_POST['css'] == "" & $_POST['js'] == "")
 switch ($_GET['m']) {
 	case "create":
 		
-		
 		$app_id = rand_str(8);
-		$path = "files/".substr($app_id, 0, 1)."/".substr($app_id, 1, 1)."/".substr($app_id, 2).".0";
+		$subpath = "files/".substr($app_id, 0, 1)."/".substr($app_id, 1, 1)."/";
+		$path = $subpath.substr($app_id, 2).".0";
+		if (!is_dir($subpath)) {
+			mkdir($subpath, 0777, true);
+		}
 		file_put_contents("$path.html", $_POST['html']);
 		file_put_contents("$path.css", $_POST['css']);
 		file_put_contents("$path.js", $_POST['js']);
